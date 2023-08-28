@@ -1,0 +1,348 @@
+# PWS Cup 2023 @CodaLab
+#
+# 以下はyamlでは設定できないため，登録後に手動で設定すること
+#  Anonymous leaderboard = True
+#  Leaderboard の Show rank
+#
+title: PWS Cup 2023
+description: 匿名化・属性推定コンテスト
+image: image-cup23.jpg
+has_registration: True
+end_date: 2023-10-24 14:00:00+09:00
+allow_teams: True
+html:
+    overview: overview.html
+    evaluation: evaluation.html
+    terms: terms_and_conditions.html
+    data: data.html
+    参加チーム一覧: teams.html
+    未使用1: additional1.html
+    未使用2: additional2.html
+    未使用3: additional3.html
+    未使用4: additional4.html
+    未使用5: additional5.html
+
+competition_docker_image: hamadakoki/codalab:legacy-py37-ruby-01
+
+phases:
+    1:
+        phasenumber: 1
+        label: "予備戦 - 加工段階"
+        description: "データを加工しましょう．"
+        color: green
+######
+## 本番用
+        start_date: 2023-08-29 14:00:00+09:00
+#####
+## テスト用
+#        start_date: 2022-08-29 14:00:00+09:00
+#        phase_never_ends: True
+######
+        max_submissions: 1000
+        max_submissions_per_day: 100
+        is_scoring_only: True
+        scoring_program: ano_scoring_program.zip
+        reference_data: ano_reference_data.zip
+        phase_never_ends: False
+        starting_kit: ano_starting_kit.zip
+        public_data: ano_public_data.zip
+    2:
+        phasenumber: 2
+        label: "休戦"
+        description: "審判が次の段階を準備しています．"
+        color: white
+######
+## 本番用
+        start_date: 2023-09-11 14:00:00+09:00
+#####
+## テスト用
+#        start_date: 2022-09-11 14:00:00+09:00
+######
+        max_submissions: 0
+        max_submissions_per_day: 0
+        is_scoring_only: True
+        scoring_program: ano_scoring_program.zip #dummy
+        reference_data: ano_reference_data.zip #dummy
+        phase_never_ends: False
+    3:
+        phasenumber: 3
+        label: "予備戦 - 攻撃段階"
+        description: "他のチームの加工データに属性推定攻撃を行いましょう．"
+        color: yellow
+######
+## 本番用
+        start_date: 2023-09-15 14:00:00+09:00
+#####
+## テスト用
+#        start_date: 2022-09-15 14:00:00+09:00
+#        phase_never_ends: True
+######
+        max_submissions: 1000
+        max_submissions_per_day: 100
+        is_scoring_only: True
+        scoring_program: atk_scoring_program.zip
+        reference_data: atk_reference_data.zip
+        phase_never_ends: False
+        starting_kit: atk_starting_kit.zip
+## public_data は加工段階終了後に登録する
+#        public_data: atk_public_data.zip
+    4:
+        phasenumber: 4
+        label: "休戦"
+        description: "審判が次の段階を準備しています．"
+        color: white
+        start_date: 2023-09-21 14:00:00+09:00
+        max_submissions: 0
+        max_submissions_per_day: 0
+        is_scoring_only: True
+        scoring_program: ano_scoring_program.zip #dummy
+        reference_data: ano_reference_data.zip #dummy
+        phase_never_ends: False
+    5:
+        phasenumber: 5
+        label: "本戦 - 加工段階"
+        description: "データを加工しましょう．"
+        color: blue
+        start_date: 2023-09-28 14:00:00+09:00
+        max_submissions: 1000
+        max_submissions_per_day: 100
+        is_scoring_only: True
+        scoring_program: ano_scoring_program.zip
+        reference_data: ano_reference_data.zip
+        phase_never_ends: False
+    6:
+        phasenumber: 6
+        label: "休戦"
+        description: "運営が次の段階を準備しています．"
+        color: white
+        start_date: 2023-10-10 14:00:00+09:00
+        max_submissions: 0
+        max_submissions_per_day: 0
+        is_scoring_only: True
+        scoring_program: ano_scoring_program.zip #dummy
+        reference_data: ano_reference_data.zip #dummy
+        phase_never_ends: False
+    7:
+        phasenumber: 7
+        label: "本戦 - 攻撃段階"
+        description: "他のチームの加工データに属性推定攻撃を行いましょう．"
+        color: orange
+        start_date: 2023-10-17 14:00:00+09:00
+        max_submissions: 1000
+        max_submissions_per_day: 100
+        is_scoring_only: True
+        scoring_program: atk_scoring_program.zip
+        reference_data: atk_reference_data.zip
+        phase_never_ends: False
+
+leaderboard:
+    leaderboards:
+        Anonymous_phase_result: &ANO_RESULTS
+            label: 加工段階の結果
+            rank: 1
+        Attack_phase_result: &ATK_RESULTS
+            label: 攻撃段階の結果
+            rank: 2
+    column_groups:
+        Ano_utility_scores: &ANO_SCORES
+            label: 有用性評価値
+        Atk_id_file: &ATK_ID_FILE
+            label: IDファイル
+        Atk_submission_status: &ATK_STATUS
+            label: 推定データ受理結果
+        Atk_submission_info: &ATK_INFO
+            label: 追加情報
+    columns:
+        ano_reserved_0:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U0
+            numeric_format: 4
+            rank: 1
+            sort: desc
+        ano_reserved_1:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U1
+            numeric_format: 4
+            rank: 2
+            sort: desc
+        ano_reserved_2:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U2
+            numeric_format: 4
+            rank: 3
+            sort: desc
+        ano_reserved_3:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U3
+            numeric_format: 4
+            rank: 4
+            sort: desc
+        ano_reserved_4:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U4
+            numeric_format: 4
+            rank: 5
+            sort: desc
+        ano_reserved_5:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U5
+            numeric_format: 4
+            rank: 6
+            sort: desc
+        ano_reserved_6:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U6
+            numeric_format: 4
+            rank: 7
+            sort: desc
+        ano_reserved_7:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U7
+            numeric_format: 4
+            rank: 8
+            sort: desc
+        ano_reserved_8:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U8
+            numeric_format: 4
+            rank: 9
+            sort: desc
+        ano_reserved_9:
+            leaderboard: *ANO_RESULTS
+            column_group: *ANO_SCORES
+            label: U9
+            numeric_format: 4
+            rank: 10
+            sort: desc
+
+        atk_info_my_id_verified:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_ID_FILE
+            label: 検査結果
+            numeric_format: 0
+            rank: 1
+        atk_info_claimed_id:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_ID_FILE
+            label: 提出した値
+            numeric_format: 0
+            rank: 2
+
+        atk_info_reserved_1:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_INFO
+            label: A1
+            numeric_format: 0
+            rank: 3
+        atk_info_reserved_2:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_INFO
+            label: A2
+            numeric_format: 0
+            rank: 4
+        atk_info_reserved_3:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_INFO
+            label: A3
+            numeric_format: 0
+            rank: 5
+
+        atk_submission_status_01:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F01
+            numeric_format: 0
+            rank: 6
+        atk_submission_status_02:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F02
+            numeric_format: 0
+            rank: 7
+        atk_submission_status_03:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F03
+            numeric_format: 0
+            rank: 8
+        atk_submission_status_04:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F04
+            numeric_format: 0
+            rank: 9
+        atk_submission_status_05:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F05
+            numeric_format: 0
+            rank: 10
+        atk_submission_status_06:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F06
+            numeric_format: 0
+            rank: 11
+        atk_submission_status_07:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F07
+            numeric_format: 0
+            rank: 12
+        atk_submission_status_08:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F08
+            numeric_format: 0
+            rank: 13
+        atk_submission_status_09:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F09
+            numeric_format: 0
+            rank: 14
+        atk_submission_status_10:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F10
+            numeric_format: 0
+            rank: 15
+        atk_submission_status_11:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F11
+            numeric_format: 0
+            rank: 16
+        atk_submission_status_12:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F12
+            numeric_format: 0
+            rank: 17
+        atk_submission_status_13:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F13
+            numeric_format: 0
+            rank: 18
+        atk_submission_status_14:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F14
+            numeric_format: 0
+            rank: 19
+        atk_submission_status_15:
+            leaderboard: *ATK_RESULTS
+            column_group: *ATK_STATUS
+            label: F15
+            numeric_format: 0
+            rank: 20

@@ -1,0 +1,2 @@
+command: ruby $program/sp_atk.rb $input/res $input/res/my_id.txt $output/scores.txt
+description: Check submission data for the attack phase

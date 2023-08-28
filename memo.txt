@@ -1,0 +1,4 @@
+$ cd scripts
+$ make
+$ cd ..
+$ make zip

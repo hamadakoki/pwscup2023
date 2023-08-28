@@ -1,0 +1,2 @@
+command: ruby $program/sp_ano.rb $input/ref/p.csv $input/res/r.csv $input/res/seed.txt $input/res/a.csv $output/scores.txt
+description: Compute scores for the anonymization phase
