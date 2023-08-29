@@ -12,3 +12,5 @@
 * _gen_p.rb: 公開データPを生成したスクリプト
 * dup_f.rb: 攻撃段階のテスト用スクリプト
 * p-pre.csv: 予備戦公開データPのコピー (あくまで CodaLab からダウンロードできるものが原本です)
+* sp_ano.rb: 加工段階の scoring program
+* sp_atk.rb: 攻撃段階の scoring program
