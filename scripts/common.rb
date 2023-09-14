@@ -13,6 +13,8 @@ class Common
   # number of teams
   T = 15
   #T = 5
+  # teams that did not submit data in anonymization phase
+  ANO_NO_SUBMISSION = ['07', '13']
 
   # number  of columns for A and O
   MA = MP + MR

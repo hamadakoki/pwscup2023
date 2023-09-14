@@ -25,13 +25,17 @@ def main()
     f_file = "#{input_path}/f_#{id}_#{my_id}.csv"
     log("try to find #{f_file}")
     score = 0
-    if File.exist?(f_file)
+    if id == my_id
+      log("skipped becaus id == my_id")
+    elsif C::ANO_NO_SUBMISSION.include?(id)
+      log("skipped due to non-submitted team")
+    elsif !File.exist?(f_file)
+      log("not found")
+    else
       log("found")
       log("test f_#{id}_#{my_id}.csv")
       CheckX.check_f_file(f_file)
       score = 1
-    else
-      log("not found")
     end
     scores << "atk_submission_status_#{id}:#{score}"
   end
