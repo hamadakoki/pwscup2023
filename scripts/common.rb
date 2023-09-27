@@ -5,7 +5,8 @@ class Common
   N = 10 ** 5
   #N = 10 ** 3
   # number of columns for P
-  MP = 6
+  #MP = 6 # pre
+  MP = 8 # main
   # number of columns for R
   MR = 10
   # number of categories. all values must be in [0, C)

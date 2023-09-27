@@ -48,11 +48,18 @@ $R: $(SEED) $(OUT)
 	ruby g.rb $< $@
 
 ## for preriminary round
-$P: p-pre.csv $(OUT)
-	cp $< $@
+#$P: p-pre.csv $(OUT)
+#	cp $< $@
 
 #p-pre.csv:
 #	ruby _gen_p.rb 123456789 > $@
+
+## for main round
+$P: p-main.csv $(OUT)
+	cp $< $@
+
+p-main.csv:
+	ruby _gen_p.rb 123123123 > $@
 
 $(SEED): $(OUT)
 	./gen_seed.sh $@
