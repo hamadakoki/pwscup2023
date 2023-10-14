@@ -15,7 +15,7 @@ class Common
   T = 15
   #T = 5
   # teams that did not submit data in anonymization phase
-  ANO_NO_SUBMISSION = ['07', '13']
+  ANO_NO_SUBMISSION = [] # all teams successfully submitted data in the main round
 
   # number  of columns for A and O
   MA = MP + MR

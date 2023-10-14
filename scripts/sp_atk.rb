@@ -15,7 +15,7 @@ def main()
 
   my_id = nil
   File.open(my_id_file){|fin| my_id = fin.gets.chomp}
-  raise unless /\A\d\d\z/ =~ my_id
+  raise "formatting error in my_id.txt" unless /\A\d\d\z/ =~ my_id
 
   scores = []
   scores << "atk_info_claimed_id:#{my_id}"
